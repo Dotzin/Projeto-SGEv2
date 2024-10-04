@@ -32,7 +32,7 @@ CREATE TABLE Usuarios (
     senha_hash VARCHAR(255),
     tipo ENUM('aluno', 'professor') -- Exemplo de tipos de usuário
 );
-
+```
 Rotas da API
 Rotas de Autenticação
 
