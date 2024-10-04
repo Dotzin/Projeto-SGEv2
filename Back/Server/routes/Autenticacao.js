@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
         const hashedPassword = await bcrypt.hash(senha, 10);
         console.log("Senha hasheada:", hashedPassword); 
 
-        db.query('INSERT INTO Usuarios (nome, email, senha, tipo) VALUES (?, ?, ?, ?)', 
+        db.query('INSERT INTO Usuarios (nome, email, senha_hash, tipo) VALUES (?, ?, ?, ?)', 
         [nome, email, hashedPassword, tipo], (err, results) => {
             if (err) {
                 console.error("Erro ao registrar o usuário:", err); 
