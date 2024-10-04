@@ -1,9 +1,8 @@
 const express = require('express');
-const db = require('../db'); // Certifique-se de que o caminho esteja correto
+const db = require('../db'); 
 const router = express.Router();
 
-// Rota para obter todos os usuários
-router.get('/', (req, res) => {  // Alterado para GET em vez de POST
+router.get('/', (req, res) => {  
     db.query('SELECT * FROM Usuarios', (err, results) => {
         if (err) {
             return res.status(500).json({ message: 'Erro ao consultar usuários', error: err });
