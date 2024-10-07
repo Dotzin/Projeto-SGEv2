@@ -5,50 +5,60 @@ const db = require('../db');
 
 const router = express.Router();
 
+const queryDb = (query, params) => {
+    return new Promise((resolve, reject) => {
+        db.query(query, params, (err, results) => {
+            if (err) {
+                return reject(err);
+            }
+            resolve(results);
+        });
+    });
+};
+
 router.post('/register', async (req, res) => {
     const { nome, email, senha, tipo } = req.body;
 
+    // Verifica se a senha está presente
     if (!senha) {
         return res.status(400).json({ message: 'Senha é obrigatória' });
     }
 
-    db.query('SELECT * FROM Usuarios WHERE email = ?', [email], async (err, results) => {
-        if (err) {
-            console.error("Erro ao buscar o usuário:", err);
-            return res.status(500).json({ message: 'Erro ao buscar o usuário' });
-        }
+    // Valida o tipo de usuário
+    if (!['aluno', 'professor'].includes(tipo)) {
+        return res.status(400).json({ message: 'Tipo de usuário inválido' });
+    }
 
-        if (results.length > 0) {
+    try {
+        // Verifica se o usuário já existe
+        const existingUser = await queryDb('SELECT * FROM Usuarios WHERE email = ?', [email]);
+        if (existingUser.length > 0) {
             return res.status(400).json({ message: 'Usuário já existe' });
         }
 
         const hashedPassword = await bcrypt.hash(senha, 10);
-        console.log("Senha hasheada:", hashedPassword); 
+        console.log("Senha hasheada:", hashedPassword);
 
-        db.query('INSERT INTO Usuarios (nome, email, senha_hash, tipo) VALUES (?, ?, ?, ?)', 
-        [nome, email, hashedPassword, tipo], (err, results) => {
-            if (err) {
-                console.error("Erro ao registrar o usuário:", err); 
-                return res.status(500).json({ message: 'Erro ao registrar o usuário' });
-            }
-            return res.status(201).json({ message: 'Usuário registrado com sucesso!' });
-        });
-    });
+        await queryDb('INSERT INTO Usuarios (nome, email, senha_hash, tipo) VALUES (?, ?, ?, ?)', 
+            [nome, email, hashedPassword, tipo]);
+
+        return res.status(201).json({ message: 'Usuário registrado com sucesso!' });
+    } 
+    catch (err) {
+        console.error("Erro ao registrar o usuário:", err);
+        return res.status(500).json({ message: 'Erro ao registrar o usuário' });
+    }
 });
-
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     const { email, senha } = req.body;
 
     if (!senha) {
         return res.status(400).json({ message: 'Senha é obrigatória' });
     }
 
-    db.query('SELECT * FROM Usuarios WHERE email = ?', [email], async (err, results) => {
-        if (err) {
-            console.error("Erro ao buscar o usuário:", err);
-            return res.status(500).json({ message: 'Erro ao buscar o usuário' });
-        }
-        
+    try {
+        // Busca o usuário
+        const results = await queryDb('SELECT * FROM Usuarios WHERE email = ?', [email]);
         if (results.length === 0) {
             return res.status(401).json({ message: 'Credenciais inválidas' });
         }
@@ -56,17 +66,22 @@ router.post('/login', (req, res) => {
         const user = results[0];
         console.log("Usuário encontrado:", user);
 
+        // Verifica se a senha corresponde
         const isMatch = await bcrypt.compare(senha, user.senha_hash);
         if (!isMatch) {
             return res.status(401).json({ message: 'Credenciais inválidas' });
         }
 
+        // Gera o token JWT
         const token = jwt.sign({ id: user.rm, tipo: user.tipo }, 'seu_segredo', {
             expiresIn: '1h'
         });
 
         return res.json({ message: 'Login bem-sucedido', token });
-    });
+    } catch (err) {
+        console.error("Erro ao buscar o usuário:", err);
+        return res.status(500).json({ message: 'Erro ao buscar o usuário' });
+    }
 });
 
 module.exports = router;
