@@ -49,6 +49,7 @@ router.post('/register', async (req, res) => {
         return res.status(500).json({ message: 'Erro ao registrar o usuário' });
     }
 });
+
 router.post('/login', async (req, res) => {
     const { email, senha } = req.body;
 
@@ -57,7 +58,6 @@ router.post('/login', async (req, res) => {
     }
 
     try {
-        // Busca o usuário
         const results = await queryDb('SELECT * FROM Usuarios WHERE email = ?', [email]);
         if (results.length === 0) {
             return res.status(401).json({ message: 'Credenciais inválidas' });
@@ -66,7 +66,6 @@ router.post('/login', async (req, res) => {
         const user = results[0];
         console.log("Usuário encontrado:", user);
 
-        // Verifica se a senha corresponde
         const isMatch = await bcrypt.compare(senha, user.senha_hash);
         if (!isMatch) {
             return res.status(401).json({ message: 'Credenciais inválidas' });
@@ -77,7 +76,7 @@ router.post('/login', async (req, res) => {
             expiresIn: '1h'
         });
 
-        return res.json({ message: 'Login bem-sucedido', token });
+        return res.json({ message: 'Login bem-sucedido', token, rm: user.rm, tipo:user.tipo }); // Retorna o token no corpo da resposta
     } catch (err) {
         console.error("Erro ao buscar o usuário:", err);
         return res.status(500).json({ message: 'Erro ao buscar o usuário' });
