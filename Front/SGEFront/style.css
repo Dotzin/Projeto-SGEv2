@@ -150,21 +150,19 @@ body{
 
 
 /*parte do conteúdo .*/
-.main{ /*estiliza o conteúdo principal*/ 
-<<<<<<< HEAD
+.main{ 
+    /*estiliza o conteúdo principal*/ 
     margin-left: 11.6%; 
-=======
     margin-left: 160px; 
->>>>>>> 619faadd286931a6ff3a0e853fbbe1df675a4f71
     margin-right: 6px;
     overflow: hidden;
     display: flex;
     gap: 5px;
     flex-wrap: wrap;
-    
 }
 
-div{ /*Cria os quadrados das máterias*/
+div{ 
+    /*Cria os quadrados das máterias*/
     background-color: rgba(47, 46, 46, 0.639);
     height:200px;
     width: 200px;
@@ -184,7 +182,6 @@ a{ /*Disfarça os links*/
     color: aliceblue;
 }
 
-
 div:hover{ /*muda a cor de fundo das divs ao passar o mause*/
    background-color:  rgba(118, 118, 118, 0.639);
 }
@@ -192,19 +189,14 @@ div:hover{ /*muda a cor de fundo das divs ao passar o mause*/
 .imgmat{ /*ajusta a imagem da matéria*/
     margin-top: 30px;
 }
-<<<<<<< HEAD
-
 header#topo{
     /*Cabeçalho Matérias*/
-=======
-header#topo{
     /*Cabeçalho*/
->>>>>>> 619faadd286931a6ff3a0e853fbbe1df675a4f71
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1em;
     font-weight: bold;
     text-align: center;
-    width: 88.25%;
+    width: 100%;
     margin: 0.1px;
     border-style: solid;
     border-color: black;
@@ -212,11 +204,8 @@ header#topo{
     border-top: none;
     border-right: none;
     border-width: 2px;
-<<<<<<< HEAD
     border-radius: 10px;
-=======
     border-radius: 20px;
->>>>>>> 619faadd286931a6ff3a0e853fbbe1df675a4f71
     float: right;
     text-shadow: 1px 1px 5px black;
 }
