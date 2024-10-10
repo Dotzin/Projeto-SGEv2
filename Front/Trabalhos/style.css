@@ -71,7 +71,7 @@ body{
     background: rgb(63, 61, 61); 
 }
 
-.sidebar button i {   /*cria estilo ao simbolo dos buttons*/
+.sidebar button i {   /*cria estilo ao simbolo dos buttons sim*/
     position: relative;
     font-size: 28px;
     transition: 0.2s;
