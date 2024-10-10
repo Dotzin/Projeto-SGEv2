@@ -16,6 +16,8 @@ const queryDb = (query, params) => {
     });
 };
 
+const SECRET_KEY = 'seu_segredo'; // Certifique-se de que essa chave secreta seja a mesma em todo o código
+
 router.post('/register', async (req, res) => {
     const { nome, email, senha, tipo } = req.body;
 
@@ -72,14 +74,33 @@ router.post('/login', async (req, res) => {
         }
 
         // Gera o token JWT
-        const token = jwt.sign({ id: user.rm, tipo: user.tipo }, 'seu_segredo', {
+        const token = jwt.sign({ id: user.rm, tipo: user.tipo }, SECRET_KEY, {
             expiresIn: '1h'
         });
 
-        return res.json({ message: 'Login bem-sucedido', token, rm: user.rm, tipo:user.tipo }); // Retorna o token no corpo da resposta
+        return res.json({ message: 'Login bem-sucedido', token, rm: user.rm, tipo: user.tipo }); // Retorna o token no corpo da resposta
     } catch (err) {
         console.error("Erro ao buscar o usuário:", err);
         return res.status(500).json({ message: 'Erro ao buscar o usuário' });
+    }
+});
+
+router.post("/verificar", async (req, res) => {
+    const token = req.headers.authorization?.split(" ")[1]; // Obtém o token do cabeçalho Authorization
+
+    if (!token) {
+        return res.status(401).json({ message: 'Token não fornecido' });
+    }
+
+    try {
+        // Verifica e decodifica o token
+        const decoded = jwt.verify(token, SECRET_KEY); // Use a mesma chave secreta que você usou para assinar o token
+
+        // Retorna o rm e o tipo do usuário
+        return res.json({ rm: decoded.id, tipo: decoded.tipo });
+    } catch (err) {
+        console.error("Erro ao verificar o token:", err);
+        return res.status(401).json({ message: 'Token inválido' });
     }
 });
 

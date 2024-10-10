@@ -12,11 +12,7 @@ const port = 3304;
 app.use(bodyParser.json());
 
 // Configuração do CORS
-app.use(cors({
-  origin: '*', // Verifique se este é o endereço correto do seu frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  credentials: true,
-}));
+app.use(cors());
 
 // Rotas
 app.use('/api/auth', authRoutes);

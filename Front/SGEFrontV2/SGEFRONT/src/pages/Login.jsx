@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './components/styles/login.css';
+import styles from '../pages/components/Styles/login.module.css';
 
 const Login = () => {
   const [email, setEmail] = useState(''); // Altere 'username' para 'email'
@@ -31,11 +31,12 @@ const Login = () => {
   };
 
   return (
-    <div className="conteinerLogin">
-      <div className="formularioLogin">
+    <div className={styles.conteinerLogin}>
+      <div className={styles.formularioLogin}>
         <h2>Login - SGE</h2>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} className={styles.form}>
           <input
+          className={styles.input}
             type="email" // Altere o tipo para "email"
             placeholder="Email" // Altere o placeholder para "Email"
             value={email}
@@ -43,13 +44,14 @@ const Login = () => {
             required // Torna o campo obrigatório
           />
           <input
+          className={styles.input}
             type="password"
             placeholder="Senha"
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
             required // Torna o campo obrigatório
           />
-          <button type="submit">Entrar</button>
+          <button type="submit" className={styles.button}>Entrar</button>
         </form>
         {mensagem && <p>{mensagem}</p>} {/* Exibe a mensagem de erro ou sucesso */}
       </div>

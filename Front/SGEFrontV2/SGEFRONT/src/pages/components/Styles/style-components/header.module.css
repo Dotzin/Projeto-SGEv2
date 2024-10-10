@@ -1,0 +1,23 @@
+.header {
+    position: absolute;
+    background-color: rgb(36, 34, 34);
+    padding: 20px;
+    height: 5%;
+    width: 100%;
+    z-index: 1;
+    border-bottom: 2px solid #000000;
+    display: flex;
+    align-items: center;
+}
+
+.perfil {
+    margin-right: auto;
+}
+
+.titleContainer {
+    font-family: Arial, Helvetica, sans-serif;
+    flex: 1;
+    display: flex;
+    justify-content: center; 
+    color: white;
+}
