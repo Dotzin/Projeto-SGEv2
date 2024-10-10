@@ -1,7 +1,18 @@
 @charset "UTF-8";
 
+*{
+    box-sizing: border-box;
+}
+
 body{
-margin: 0px;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(36, 34, 34);
+    color: aliceblue;
+}
+
+.border{
+    border: 1px solid red;
 }
 
 .sidebar{  /*cria a side bar e faz estilizações e posicionamento*/
@@ -14,12 +25,15 @@ margin: 0px;
     height: 100%;
     padding: 40px 10px 30px 10px;
     border-right: 1px solid rgb(19, 12, 12);
-    background-color: rgb(36, 34, 34);
 }
 
+.sidebar-header{
+    width: 100%;
+    margin-bottom: 16px ;
+}
 .logo-img{ /*Da estilo a foto de perfil*/
-    width: 45%;
-    height: 95%;
+    width: 50px;
+    max-height: 45px;
     border-radius: 50%;
     object-fit: cover;
     transition: 0.4s;
@@ -29,16 +43,6 @@ margin: 0px;
 
 .logo-img:hover{ /*cria o efeito de ao passar o mause por cima a escala da foto aumenta*/
     transform: scale(1.5);
-}
-
-.sidebar-header{
-    width: 100%;
-    margin-bottom: 16px ;
-
-}
-
-.sidebar > nav{
-    flex: 1 1 auto;
 }
 
 .sidebar button{ /*cria estilo aos buttons da side bar*/
@@ -77,15 +81,9 @@ margin: 0px;
     font-size: 16px;
 }
 
-.sidebar button > span{  /*estilo para o texto dos buttons*/
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    height: 48px;
-    padding: 0 16px 0 12px;
-    border-radius: 24px;
-    line-height: 1;
-    transition: all 0.2s;
+
+.sidebar > nav{
+    flex: 1 1 auto;
 }
 
 /*Estilização da sidebar*/
@@ -145,10 +143,54 @@ margin: 0px;
 
 }
 
+
+/*parte do conteúdo .*/
+.main{ 
+    /*estiliza o conteúdo principal*/ 
+    margin-left: 11.6%; 
+    margin-left: 160px; 
+    margin-right: 6px;
+    overflow: hidden;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+div{ 
+    /*Cria os quadrados das máterias*/
+    background-color: rgba(47, 46, 46, 0.639);
+    height:50px;
+    width: 80%;
+    margin: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    transition: 0.2s;
+    text-align: center;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+a{ /*Disfarça os links*/
+    text-decoration: none;
+    color: aliceblue;
+}
+
+div:hover{ /*muda a cor de fundo das divs ao passar o mause*/
+   background-color:  rgba(118, 118, 118, 0.639);
+}
+
+.imgmat{ /*ajusta a imagem da matéria*/
+    margin-top: 30px;
+}
 header#topo{
     /*Cabeçalho Matérias*/
     /*Cabeçalho*/
-    width: 86.7%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
     border-style: solid;
     border-color: black;
     border-left: none;
@@ -156,15 +198,39 @@ header#topo{
     border-right: none;
     border-width: 2px;
     border-radius: 10px;
+    border-radius: 20px;
     float: right;
     text-shadow: 1px 1px 5px black;
-    background-color: rgb(36, 34, 34);
 }
 
-header#topo > h1{
+.trabalho{
     text-align: center;
+    width: 70%;
+}
+
+.trabalho1{
+    width: 70%;
+    text-align: center;
+}
+
+.icontrabalho{
+    width: 4%;
+    height: 70%;
+    margin-left: 20px;
+    margin-top: 0.7%;
+    float: left;
+    border-radius: 20%;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.712);
+    border-width: 1px;
+}
+
+.trabalho > h1{
     font-family: Arial, Helvetica, sans-serif;
-    text-shadow: 1px 1px 5px black;
-    font-weight: bold;
-    color: white;
+    font-size: 70%;
+}
+
+.trabalho1 > h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 70%;
 }
