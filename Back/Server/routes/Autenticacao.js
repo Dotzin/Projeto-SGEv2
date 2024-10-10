@@ -16,33 +16,26 @@ const queryDb = (query, params) => {
     });
 };
 
-const SECRET_KEY = 'seu_segredo'; // Certifique-se de que essa chave secreta seja a mesma em todo o código
+const SECRET_KEY = 'oBrianDaoCude4'; // Mantenha esta chave secreta consistente
 
+// Rota para registrar um novo usuário
 router.post('/register', async (req, res) => {
-    const { nome, email, senha, tipo } = req.body;
-
-    // Verifica se a senha está presente
+    const { rm, nome, email, senha, tipo } = req.body;
     if (!senha) {
         return res.status(400).json({ message: 'Senha é obrigatória' });
     }
-
-    // Valida o tipo de usuário
     if (!['aluno', 'professor'].includes(tipo)) {
         return res.status(400).json({ message: 'Tipo de usuário inválido' });
     }
-
     try {
-        // Verifica se o usuário já existe
         const existingUser = await queryDb('SELECT * FROM Usuarios WHERE email = ?', [email]);
         if (existingUser.length > 0) {
             return res.status(400).json({ message: 'Usuário já existe' });
         }
 
         const hashedPassword = await bcrypt.hash(senha, 10);
-        console.log("Senha hasheada:", hashedPassword);
-
-        await queryDb('INSERT INTO Usuarios (nome, email, senha_hash, tipo) VALUES (?, ?, ?, ?)', 
-            [nome, email, hashedPassword, tipo]);
+        await queryDb('INSERT INTO Usuarios (id, nome, email, senha_hash, tipo) VALUES (?, ?, ?, ?, ?)', 
+            [rm, nome, email, hashedPassword, tipo]);
 
         return res.status(201).json({ message: 'Usuário registrado com sucesso!' });
     } 
@@ -51,7 +44,7 @@ router.post('/register', async (req, res) => {
         return res.status(500).json({ message: 'Erro ao registrar o usuário' });
     }
 });
-
+// Rota para login de usuário
 router.post('/login', async (req, res) => {
     const { email, senha } = req.body;
 
@@ -66,42 +59,39 @@ router.post('/login', async (req, res) => {
         }
 
         const user = results[0];
-        console.log("Usuário encontrado:", user);
-
         const isMatch = await bcrypt.compare(senha, user.senha_hash);
         if (!isMatch) {
             return res.status(401).json({ message: 'Credenciais inválidas' });
         }
 
-        // Gera o token JWT
-        const token = jwt.sign({ id: user.rm, tipo: user.tipo }, SECRET_KEY, {
+        // Gera o token JWT, incluindo rm e tipo
+        const token = jwt.sign({ id: user.id, tipo: user.tipo, rm: user.id }, SECRET_KEY, {
             expiresIn: '1h'
         });
 
-        return res.json({ message: 'Login bem-sucedido', token, rm: user.rm, tipo: user.tipo }); // Retorna o token no corpo da resposta
+        return res.json({ message: 'Login bem-sucedido', token, rm: user.id, tipo: user.tipo });
     } catch (err) {
         console.error("Erro ao buscar o usuário:", err);
         return res.status(500).json({ message: 'Erro ao buscar o usuário' });
     }
 });
-
+// Rota para verificar o token
 router.post("/verificar", async (req, res) => {
-    const token = req.headers.authorization?.split(" ")[1]; // Obtém o token do cabeçalho Authorization
+    const token = req.headers.authorization?.split(" ")[1];
 
     if (!token) {
         return res.status(401).json({ message: 'Token não fornecido' });
     }
 
     try {
-        // Verifica e decodifica o token
-        const decoded = jwt.verify(token, SECRET_KEY); // Use a mesma chave secreta que você usou para assinar o token
+        const decoded = jwt.verify(token, SECRET_KEY);
+        console.log("Token decodificado:", decoded); // Verifique se rm e id estão aqui
 
         // Retorna o rm e o tipo do usuário
-        return res.json({ rm: decoded.id, tipo: decoded.tipo });
+        return res.json({ rm: decoded.rm, tipo: decoded.tipo });
     } catch (err) {
         console.error("Erro ao verificar o token:", err);
         return res.status(401).json({ message: 'Token inválido' });
     }
 });
-
 module.exports = router;

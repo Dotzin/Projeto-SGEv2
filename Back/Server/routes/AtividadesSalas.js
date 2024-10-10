@@ -61,7 +61,7 @@ router.post("/salas/criar", async (req, res) => {
     if (!professorId) {
       return res.status(400).json({ message: 'Professor ID é obrigatório.' });
     }
-    const [professor] = await queryDatabase('SELECT tipo FROM Usuarios WHERE rm = ?', [professorId]);
+    const [professor] = await queryDatabase('SELECT tipo FROM Usuarios WHERE id = ?', [professorId]);
     
     if (!professor || professor.tipo !== 'professor') {
       return res.status(400).json({ message: 'O ID fornecido não pertence a um professor.' });
@@ -99,8 +99,7 @@ router.post('/salas/addAlunos', async (req, res) => {
       return res.status(404).json({ message: 'Sala não encontrada.' });
     }
 
-    // Verifique se o aluno existe pela coluna 'rm'
-    const alunoResults = await queryDatabase('SELECT COUNT(*) AS count FROM Usuarios WHERE rm = ?', [alunoId]);
+    const alunoResults = await queryDatabase('SELECT COUNT(*) AS count FROM Usuarios WHERE id = ?', [alunoId]);
     if (alunoResults[0].count === 0) {
       return res.status(404).json({ message: 'Aluno não encontrado.' });
     }
@@ -148,7 +147,7 @@ router.post('/atividades/avaliar', async (req, res) => {
       return res.status(404).json({ message: 'Atividade não encontrada.' });
     }
 
-    const alunoResults = await queryDatabase('SELECT COUNT(*) AS count FROM Usuarios WHERE rm = ?', [alunoId]);
+    const alunoResults = await queryDatabase('SELECT COUNT(*) AS count FROM Usuarios WHERE id = ?', [alunoId]);
     if (alunoResults[0].count === 0) {
       return res.status(404).json({ message: 'Aluno não encontrado.' });
     }
@@ -180,9 +179,9 @@ router.get('/salas/:salaId/alunos', async (req, res) => {
 
   try {
     const results = await queryDatabase(`
-      SELECT U.rm, U.nome 
+      SELECT U.id, U.nome 
       FROM Salas_Alunos SA
-      JOIN Usuarios U ON SA.alunoId = U.rm
+      JOIN Usuarios U ON SA.alunoId = U.id
       WHERE SA.salaId = ?`, [salaId]);
     res.json(results);
   } catch (err) {
@@ -212,7 +211,7 @@ router.get('/atividades/:atividadeId/avaliacoes', async (req, res) => {
     const results = await queryDatabase(`
       SELECT U.nome, A.nota, A.comentario 
       FROM Avaliacoes A
-      JOIN Usuarios U ON A.alunoId = U.rm
+      JOIN Usuarios U ON A.alunoId = U.id
       WHERE A.atividadeId = ?`, [atividadeId]);
     res.json(results);
   } catch (err) {
@@ -243,7 +242,7 @@ router.get('/alunos/:alunoId/atividades', async (req, res) => {
 router.post('/salas/:salaId/mensagens', async (req, res) => {
   const { salaId } = req.params;
   const { mensagem } = req.body;
-  const usuarioId = req.user.rm;
+  const usuarioId = req.user.id;
 
   if (!mensagem) {
     return res.status(400).json({ message: 'Mensagem é obrigatória.' });
@@ -354,24 +353,26 @@ router.post('/salas/:salaId/materiais', uploadMateriais.single('arquivo'), (req,
       });
   });
 });
-router.get('/salas/:salaId/materiais', (req, res) => {
-  const { salaId } = req.params;
+// Listar salas de um aluno
+router.get('/alunos/:alunoId/salas', async (req, res) => {
+  const { alunoId } = req.params;
 
-  // Consulta para buscar materiais da sala especificada
-  const query = 'SELECT * FROM Materiais WHERE salaId = ?';
-  db.query(query, [salaId], (err, results) => {
-      if (err) {
-          console.error(err);
-          return res.status(500).json({ message: 'Erro ao listar materiais.' });
-      }
+  try {
+    const results = await queryDatabase(`
+      SELECT S.id, S.nome 
+      FROM Salas S
+      JOIN Salas_Alunos SA ON S.id = SA.salaId
+      WHERE SA.alunoId = ?`, [alunoId]);
+    
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Nenhuma sala encontrada para o aluno.' });
+    }
 
-      // Verifica se há materiais
-      if (results.length === 0) {
-          return res.status(404).json({ message: 'Nenhum material encontrado para esta sala.' });
-      }
-
-      res.json(results); // Retorna os materiais encontrados
-  });
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Erro ao listar salas.' });
+  }
 });
 
 module.exports = router;

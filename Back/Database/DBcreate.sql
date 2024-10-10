@@ -4,7 +4,7 @@ CREATE TABLE Usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
     email VARCHAR(100) UNIQUE,
-    senha VARCHAR(100),
+    senha_hash VARCHAR(100),
     tipo ENUM('aluno', 'professor')
 );
 
