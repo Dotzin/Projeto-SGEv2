@@ -1,18 +1,7 @@
 @charset "UTF-8";
 
-*{
-    box-sizing: border-box;
-}
-
 body{
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(36, 34, 34);
-    color: aliceblue;
-}
-
-.border{
-    border: 1px solid red;
+margin: 0px;
 }
 
 .sidebar{  /*cria a side bar e faz estilizações e posicionamento*/
@@ -25,17 +14,12 @@ body{
     height: 100%;
     padding: 40px 10px 30px 10px;
     border-right: 1px solid rgb(19, 12, 12);
-
+    background-color: rgb(36, 34, 34);
 }
 
-.sidebar-header{
-    width: 100%;
-    margin-bottom: 16px ;
-
-}
 .logo-img{ /*Da estilo a foto de perfil*/
-    width: 50px;
-    max-height: 45px;
+    width: 45%;
+    height: 95%;
     border-radius: 50%;
     object-fit: cover;
     transition: 0.4s;
@@ -45,6 +29,16 @@ body{
 
 .logo-img:hover{ /*cria o efeito de ao passar o mause por cima a escala da foto aumenta*/
     transform: scale(1.5);
+}
+
+.sidebar-header{
+    width: 100%;
+    margin-bottom: 16px ;
+
+}
+
+.sidebar > nav{
+    flex: 1 1 auto;
 }
 
 .sidebar button{ /*cria estilo aos buttons da side bar*/
@@ -58,6 +52,20 @@ body{
     padding: 0;
 }
 
+.sidebar button:hover > span{ /*Quando passamos o mause sobre os buttons o fundo muda */
+    background: rgb(63, 61, 61); 
+}
+
+.sidebar button i {   /*cria estilo ao simbolo dos buttons*/
+    position: relative;
+    font-size: 28px;
+    transition: 0.2s;
+}
+
+.sidebar button span{ 
+    font-size: 16px;
+}
+
 .sidebar button > span{  /*estilo para o texto dos buttons*/
     display: inline-flex;
     align-items: center;
@@ -67,29 +75,7 @@ body{
     border-radius: 24px;
     line-height: 1;
     transition: all 0.2s;
-
-
 }
-
-.sidebar button:hover > span{ /*Quando passamos o mause sobre os buttons o fundo muda */
-    background: rgb(63, 61, 61); 
-}
-.sidebar button i {   /*cria estilo ao simbolo dos buttons*/
-    position: relative;
-    font-size: 28px;
-    transition: 0.2s;
-
-}
-
-.sidebar button span{ 
-    font-size: 16px;
-}
-
-
-.sidebar > nav{
-    flex: 1 1 auto;
-}
-
 
 /*Estilização da sidebar*/
 @media (width < 700px) {
@@ -148,56 +134,10 @@ body{
 
 }
 
-
-/*parte do conteúdo .*/
-.main{ 
-    /*estiliza o conteúdo principal*/ 
-    margin-left: 11.6%; 
-    margin-left: 160px; 
-    margin-right: 6px;
-    overflow: hidden;
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-}
-
-div{ 
-    /*Cria os quadrados das máterias*/
-    background-color: rgba(47, 46, 46, 0.639);
-    height:200px;
-    width: 200px;
-    margin: 10px;
-    margin-top: 20px;
-    border-radius: 30%;
-    transition: 0.2s;
-    text-align: center;
-    font-size: 25px;
-    font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
-   
-}
-
-a{ /*Disfarça os links*/
-    text-decoration: none;
-    color: aliceblue;
-}
-
-div:hover{ /*muda a cor de fundo das divs ao passar o mause*/
-   background-color:  rgba(118, 118, 118, 0.639);
-}
-
-.imgmat{ /*ajusta a imagem da matéria*/
-    margin-top: 30px;
-}
 header#topo{
     /*Cabeçalho Matérias*/
     /*Cabeçalho*/
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    margin: 0.1px;
+    width: 86.7%;
     border-style: solid;
     border-color: black;
     border-left: none;
@@ -205,7 +145,15 @@ header#topo{
     border-right: none;
     border-width: 2px;
     border-radius: 10px;
-    border-radius: 20px;
     float: right;
     text-shadow: 1px 1px 5px black;
+    background-color: rgb(36, 34, 34);
+}
+
+header#topo > h1{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 1px 1px 5px black;
+    font-weight: bold;
+    color: white;
 }
