@@ -77,10 +77,9 @@ const Equipes = () => {
                 ) : (
                     salas.map(sala => (
                         <div className={styles.equipe} key={sala.id}>
-                            <a href="">
-                                <img src="" alt="imagemEquipe" className={styles.img} />
-                                <span className={styles.equipe}>{sala.nome}</span>
-                            </a>
+                                <div className={styles.BottomEquipes}>
+                                <span className={styles.equipenome}>{sala.nome}</span>
+                                </div>
                         </div>
                     ))
                 )}

@@ -5,7 +5,7 @@ const Sidebar = () => {
         <aside className={styles.sidebar}>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
         <nav className={styles.nav}>
-           <a href="#">
+           <a href="/">
                 <button className={styles.button}>
                 <span>
                     <i className={`material-symbols-outlined ${styles.i}`}> home </i>
@@ -15,7 +15,7 @@ const Sidebar = () => {
                 </span>
             </button>
         </a>
-            <a href="index.html">
+            <a href="   ">
                 <button className={styles.button}>
                     <span className={styles.span}>
                         <i className={`material-symbols-outlined ${styles.i}`}> Groups </i>
