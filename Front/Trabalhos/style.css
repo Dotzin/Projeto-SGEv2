@@ -197,7 +197,7 @@ header#topo{
     border-top: none;
     border-right: none;
     border-width: 2px;
-    border-radius: 10px;
+    
     border-radius: 20px;
     float: right;
     text-shadow: 1px 1px 5px black;
@@ -235,8 +235,46 @@ header#topo{
     font-size: 70%;
 }
 
-span{
-    display: block;
-    width: 100%;
-    float: right;
+.data{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 90%;
+    margin-bottom: 1px;
+    padding-bottom: 1px;
+}
+
+nav#menu{
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 10px;
+    padding: 1%;
+    width: 95%;
+    margin-top: 3%;
+    margin-right: 9%;
+}
+
+.pendentes{
+    text-align: center;
+}
+
+.btnpendentes{
+    height: 50px;
+    background-color: transparent;
+    border-style: solid;
+    border-color: black;
+    color: aliceblue;
+    cursor: pointer;
+    text-align: left;
+    padding: 1%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 24px;
+    font-size: 1.5em;
+    margin: 0% 1%;
+    background-color: rgba(47, 46, 46, 0.639);
+}
+
+.btnpendentes:hover{
+    background: rgb(94, 91, 91);
+    transition: 0.2s;
 }
