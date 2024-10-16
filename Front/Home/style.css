@@ -33,12 +33,13 @@ body{
 }
 .logo-img{ /*Da estilo a foto de perfil*/
     width: 50px;
-    max-height: 45px;
+    height: 45px;
     border-radius: 50%;
     object-fit: cover;
     transition: 0.4s;
     margin-left: 3px;
     cursor: pointer;
+
 }
 
 .logo-img:hover{ /*cria o efeito de ao passar o mause por cima a escala da foto aumenta*/
@@ -144,99 +145,89 @@ body{
 }
 
 
-/*parte do conteúdo .*/
-.main{ 
-    /*estiliza o conteúdo principal*/ 
-    margin-left: 11.6%; 
-    margin-left: 160px; 
-    margin-right: 6px;
-    overflow: hidden;
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
+
+
+
+
+
+
+
+
+
+
+
+.main {
+    margin-left: 160px;
+    padding: 20px;
 }
 
-div{ 
-    /*Cria os quadrados das máterias*/
+.profile-section {
     background-color: rgba(47, 46, 46, 0.639);
-    height:50px;
-    width: 90%;
-    margin: 10px;
-    margin-top: 20px;
     border-radius: 10px;
-    transition: 0.2s;
-    text-align: center;
-    font-size: 25px;
-    font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
+    padding: 20px;
+    margin-bottom: 40px;
 }
 
-a{ /*Disfarça os links*/
-    text-decoration: none;
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid aliceblue;
+}
+
+.change-photo-btn {
+    background-color: rgb(63, 61, 61);
+    color: aliceblue;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.change-photo-btn:hover {
+    background-color: rgb(80, 78, 78);
+}
+
+.profile-details {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+.events-section {
+    background-color: rgba(47, 46, 46, 0.639);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.events {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.event {
+    background-color: rgba(63, 61, 61, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.event h3 {
+    margin: 0;
     color: aliceblue;
 }
 
-div:hover{ /*muda a cor de fundo das divs ao passar o mause*/
-   background-color:  rgba(118, 118, 118, 0.639);
+.event p {
+    color: lightgray;
 }
 
-.imgmat{ /*ajusta a imagem da matéria*/
-    margin-top: 30px;
-}
-header#topo{
-    /*Cabeçalho Matérias*/
-    /*Cabeçalho*/
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    border-style: solid;
-    border-color: black;
-    border-left: none;
-    border-top: none;
-    border-right: none;
-    border-width: 2px;
-    border-radius: 10px;
-    border-radius: 20px;
-    float: right;
-    text-shadow: 1px 1px 5px black;
-}
 
-.trabalho{
-    text-align: center;
-    width: 90%;
-}
-
-.trabalho1{
-    width: 90%;
-    text-align: center;
-}
-
-.icontrabalho{
-    width: 4%;
-    height: 70%;
-    margin-left: 20px;
-    margin-top: 0.7%;
-    float: left;
-    border-radius: 20%;
-    border-style: solid;
-    border-color: rgba(255, 255, 255, 0.712);
-    border-width: 1px;
-}
-
-.trabalho > h1{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 70%;
-}
-
-.trabalho1 > h1{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 70%;
-}
-
-span{
-    display: block;
-    width: 100%;
-    float: right;
-}
