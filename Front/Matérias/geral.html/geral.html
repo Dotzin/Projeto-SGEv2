@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SGE - 1 º Bim.</title>
-    <link rel="shortcut icon" href="../imagens/logo.png" type="image/x-icon">
+    <title>Document</title>
     <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <body>
     <aside class="sidebar">
         <header class="sidebar-header">
-            <img src="img/logo.png" alt="perfil"class="logo-img">
+            <img src="img/capa_stevejobs.jpg" alt="Capa do perfil de Steve Jobs" class="logo-img">
         </header>
         <nav>
-            <a href="../../Home/index.html">
+            <a href="#">
                 <button>
                     <span>
                         <i class="material-symbols-outlined">home</i>
@@ -22,7 +21,7 @@
                     </span>
                 </button>
             </a>
-            <a href="../materias.html">
+            <a href="index.html">
                 <button>
                     <span>
                         <i class="material-symbols-outlined">Groups</i>
@@ -30,7 +29,7 @@
                     </span>
                 </button>
             </a>
-            <a href="../../Trabalhos/trabalhos.html">
+            <a href="">
                 <button>
                     <span>
                         <i class="material-symbols-outlined">Backpack</i>
@@ -38,7 +37,7 @@
                     </span>
                 </button>
             </a>        
-            <a href="../../Notas/notas.html">
+            <a href="#">
                 <button>
                     <span>
                         <i class="material-symbols-outlined">Leaderboard</i>
@@ -57,13 +56,13 @@
                     <img src="img/Screenshot_1.png" alt="Imagem representativa da matéria Matemática" class="imgensdamatéria">
                 </span>
             </a>
-            <a href="../geral.html/geral.html" class="lblMateria">
+            <a href="#" class="lblMateria">
                 <button>
                     <span><strong>Matematica-Geral</strong></span>
                 </button>
             </a>
             <br>
-            <a href="../dentro_matéria1/1bim.html">
+            <a href="../dentro_matéria1/index.html">
                 <button>
                     <span>1º Bimestre</span>
                 </button>
@@ -85,14 +84,44 @@
             </a>
         </nav>
     </aside>
+    <section class="chat-container">
+        <div class="chat-header">
+            <h2>Niggers</h2>
+        </div>
+        <div class="chat-messages">
+            <div class="message received">Olá! Como posso ajudar?</div>
+            <!-- As novas mensagens serão adicionadas aqui -->
+        </div>
+        <div class="chat-input">
+            <form id="chat-form">
+                <input type="text" id="aribaba" placeholder="Fala desgraça...">
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+  
+    <script>
 
-    <main class="main">
-        <section class="profile-section">
-            <h2>Materiais-1ºBimestre:</h2>
-            <article class="arquivos"><div class="imgarqui"></div><p>Material sobre: B.D</p></article>
-            <article class="arquivos"> <div class="imgarqui"></div> <p>Material sobre: L.P</p> </article>
-            <article class="arquivos"> <div class="imgarqui"></div> <p>Material sobre: P.W</p> </article>
-            <article class="arquivos"> <div class="imgarqui"></div> <p>Material sobre: MAT</p> </article>
-    </main>
+        document.getElementById('chat-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const messageInput = document.getElementById('aribaba'); 
+            const messageText = messageInput.value.trim();
+            
+            if (messageText !== "") {
+                const messagesContainer = document.querySelector('.chat-messages');
+
+                const newMessage = document.createElement('div');
+                newMessage.classList.add('message', 'sent');
+
+                newMessage.textContent = messageText;
+                messagesContainer.appendChild(newMessage);
+                 
+                messageInput.value = "";
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        });
+    </script>
+    
 </body>
 </html>

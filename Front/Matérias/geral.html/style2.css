@@ -1,0 +1,366 @@
+@charset "UTF-8";
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(36, 34, 34);
+    color: aliceblue;
+}
+
+.border{
+    border: 1px solid red;
+}
+
+.sidebar{  /*cria a side bar e faz estilizações e posicionamento*/
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    width: 150px;
+    height: 100%;
+    padding: 40px 10px 30px 10px;
+    border-right: 1px solid rgb(19, 12, 12) ;
+    z-index: 10;
+    background-color: rgb(36, 34, 34); 
+
+}
+
+.sidebar-header{
+    width: 100%;
+    margin-bottom: 16px ;
+
+}
+.logo-img{ /*Da estilo a foto de perfil*/
+    width: 50px;
+    max-height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: 0.4s;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.logo-img:hover{ /*cria o efeito de ao passar o mause por cima a escala da foto aumenta*/
+    transform: scale(1.5);
+}
+
+.sidebar button{ /*cria estilo aos buttons da side bar*/
+    height: 50px;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+    color: aliceblue;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+}
+
+.sidebar button > span{  /*estilo para o texto dos buttons*/
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    padding: 0 16px 0 12px;
+    border-radius: 24px;
+    line-height: 1;
+    transition: all 0.2s;
+
+
+}
+
+.sidebar button:hover > span{ /*Quando passamos o mause sobre os buttons o fundo muda */
+    background: rgb(63, 61, 61); 
+}
+.sidebar button i {   /*cria estilo ao simbolo dos buttons*/
+    position: relative;
+    font-size: 28px;
+    transition: 0.2s;
+
+}
+
+.sidebar button span{ 
+    font-size: 16px;
+}
+
+
+.sidebar > nav{
+    flex: 1 1 auto;
+}
+
+
+/*Estilização da sidebar*/
+@media (width < 700px) {
+
+    .sidebar{
+        width: 72px;
+        
+
+    }
+
+    .sidebar button > span{
+        width: 50px;
+        transition: 0.4s;
+    }
+
+    .sidebar button > span > span{
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .main{
+        transition: 0.4s;
+        margin-left: 78px !important; 
+        
+    }
+
+    .main > a > div{
+        height:100px;
+        width: 100px;
+        margin: 5px;
+        margin-top: 20px;
+        
+    }
+
+    .main > div{
+        height:100px;
+        width: 100px;
+        margin: 5px;
+        margin-top: 20px;  
+             
+        
+    }
+
+    .imgmat {
+        height:40px;
+        width: 40px;
+        margin-top: 0px;
+      
+    }
+
+    .p2{
+        font-size: 13px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0px;
+    }
+
+}
+
+
+/*outro menu*/
+
+.menudechat{  
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column; 
+    width: 150px;
+    height: 100%;
+    padding: 40px 10px 30px 10px;
+    border-right: 2px solid rgb(19, 12, 12);
+    background-color: rgb(54, 52, 52);
+    text-align: start;  
+    margin-left: 150px; 
+    margin-right: 6px;
+    overflow: hidden;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.coisas{
+    margin-left: 20; 
+    display: flex;
+    cursor: default;
+}
+
+.menudechat button{ 
+    height: 20px;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+    color: aliceblue;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.menudechat button > span{  
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 25px;
+    padding: 0 12px 0 9px;
+    border-radius: 10px;
+    line-height: 1;
+}
+
+.menudechat button:hover > span{  
+    background: rgb(34, 33, 33); 
+}
+
+.imgensdamatéria{
+    margin-bottom: 4px;
+}
+
+.lblMateria{
+    position: relative;
+    right: 7%;
+}
+
+.main {
+    margin-left: 300px;
+    padding: 20px;
+}
+
+.profile-section {
+    background-color: rgba(47, 46, 46, 0.639);
+    border-radius: 10px;
+    padding: 20px;
+    height: auto;
+    height: fit-content;
+    
+}
+
+.arquivos{
+    background-color: rgba(156, 151, 151, 0.639);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 40px;
+    height: 70px;  
+}
+.imgarqui{
+    background-image: url("./img/Jeremy_Li_0-1706168381597.png");
+    margin-left: 10px;
+    width: 60px;
+    height: 60px;
+    background-size: 60px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+@media (width < 700px) {
+    .main{
+        margin-left: 60px; 
+    }
+
+    .profile-section{
+        margin-left: 90px;
+
+    }
+
+    .menudechat{
+        margin-left: 70px; 
+        width: 110px;
+        transition: 0.4s;
+    }
+
+    .imgarqui{
+    background-image: url("./img/Jeremy_Li_0-1706168381597.png");
+    margin-left: 3px !important;
+    width: 30px !important;
+    height: 30px !important;
+    background-size: 30px !important;
+    background-repeat: no-repeat;
+    }
+
+    .arquivos > p{
+        font-size: 15px;
+        margin-left: 15px;
+    }
+
+}
+ /* Estilos gerais do chat */
+.chat-container {
+    width: 70%;
+    height: 550px;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    background-color: #242424;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(93, 0, 241, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat-header {
+    background-color: #34528a;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 15px; 
+    overflow-y: auto;
+    display: flex; 
+    flex-direction: column;
+}
+
+.message {
+    margin-bottom: 10px;    
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.message.received {
+    background-color: #474747;
+    align-self: flex-start;
+}
+
+.message.sent {
+    background-color: #474747;
+    align-self: flex-end;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #474747;
+    background-color: #474747; 
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.chat-input input { 
+    flex-grow: 1; 
+    padding: 10px;
+    border: 2px solid #8b04c965;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    background-color: #4a76a8;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #3c1e4e;
+}
+
