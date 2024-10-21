@@ -9,6 +9,7 @@
 }
 .conteinerEquipes{
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     padding: 10px;
     width: 70%;
@@ -69,6 +70,20 @@ background-color: gray;
 display: flex;
 align-items: center;
 border-radius: 0px 00px 20px 20px ;
+}
+.botaoCriarSala{
+    width: 15%;
+    height: 30px;
+    margin-top: 5vh;
+    background-color: rgb(49, 49, 49);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+.botaoCriarSala:hover{
+    transform: scale(1.2);
 }
 @media (width < 800px){
     .conteinerEquipes{

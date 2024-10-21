@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Styles/style-components/header.module.css'
 
 const Header = ({ titulo }) => {
+
     return (
         <header className={styles.header}>
             <div className={styles.perfil}>Perfil</div>

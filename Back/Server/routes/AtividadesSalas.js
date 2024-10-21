@@ -374,5 +374,22 @@ router.get('/alunos/:alunoId/salas', async (req, res) => {
     res.status(500).json({ message: 'Erro ao listar salas.' });
   }
 });
+router.get('/materiais/:salaId/salas', async (req, res) => {
+  const { salaID } = req.params;
+
+  try {
+    const results = await queryDatabase(`
+      SELECT * FROM Materiais WHERE salaId = ?`, [salaID]);
+    
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Nenhum material nessa sala' });
+    }
+
+    res.json(results);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Erro ao listar Materiais.' });
+  }
+});
 
 module.exports = router;
