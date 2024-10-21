@@ -24,12 +24,16 @@ body{
     width: 150px;
     height: 100%;
     padding: 40px 10px 30px 10px;
-    border-right: 1px solid rgb(19, 12, 12);
+    border-right: 1px solid rgb(19, 12, 12) ;
+    z-index: 10;
+    background-color: rgb(36, 34, 34); 
+
 }
 
 .sidebar-header{
     width: 100%;
     margin-bottom: 16px ;
+
 }
 .logo-img{ /*Da estilo a foto de perfil*/
     width: 50px;
@@ -65,16 +69,18 @@ body{
     border-radius: 24px;
     line-height: 1;
     transition: all 0.2s;
+
+
 }
 
 .sidebar button:hover > span{ /*Quando passamos o mause sobre os buttons o fundo muda */
     background: rgb(63, 61, 61); 
 }
-
-.sidebar button i {   /*cria estilo ao simbolo dos buttons sim*/
+.sidebar button i {   /*cria estilo ao simbolo dos buttons*/
     position: relative;
     font-size: 28px;
     transition: 0.2s;
+
 }
 
 .sidebar button span{ 
@@ -85,6 +91,7 @@ body{
 .sidebar > nav{
     flex: 1 1 auto;
 }
+
 
 /*Estilização da sidebar*/
 @media (width < 700px) {
@@ -143,90 +150,49 @@ body{
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
+/* Estilos para a tabela de notas */
 
 .main {
-    margin-left: 160px;
+    margin-left: 150px;
     padding: 20px;
 }
 
-.profile-section {
+.grades-section {
     background-color: rgba(47, 46, 46, 0.639);
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 40px;
 }
 
-.profile-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.profile-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid aliceblue;
-}
-
-.change-photo-btn {
-    background-color: rgb(63, 61, 61);
-    color: aliceblue;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.change-photo-btn:hover {
-    background-color: rgb(80, 78, 78);
-}
-
-.profile-details {
+.grades-table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
-    font-size: 16px;
-    line-height: 1.5;
 }
 
-
-.events-section {
-    background-color: rgba(47, 46, 46, 0.639);
-    border-radius: 10px;
-    padding: 20px;
+.grades-table th, .grades-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid rgba(118, 118, 118, 0.639);
 }
 
-.events {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.event {
+.grades-table th {
     background-color: rgba(63, 61, 61, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.event h3 {
-    margin: 0;
     color: aliceblue;
 }
 
-.event p {
-    color: lightgray;
+.grades-table td {
+    background-color: rgba(47, 46, 46, 0.639);
+    color: aliceblue;
+}
+
+.grades-table tr:hover {
+    background-color: rgba(63, 61, 61, 0.8);
+}
+
+.grades-section h2 {
+    color: aliceblue;
+    margin-bottom: 20px;
 }
 
 

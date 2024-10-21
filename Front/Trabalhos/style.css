@@ -33,11 +33,11 @@ body{
 }
 .logo-img{ /*Da estilo a foto de perfil*/
     width: 50px;
-    max-height: 45px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
     transition: 0.4s;
-    margin-left: 3px;
+    margin-left: 30%;
     cursor: pointer;
 }
 
@@ -266,7 +266,7 @@ nav#menu{
     cursor: pointer;
     text-align: left;
     padding: 1%;
-    padding-left: 10%;
+    padding-left: 9%;
     padding-right: 10%;
     border-radius: 24px;
     font-size: 1.5em;
