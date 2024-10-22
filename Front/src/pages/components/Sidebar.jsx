@@ -24,18 +24,8 @@ const Sidebar = () => {
                         </span>
                     </span>
                 </button>
-            </a>
-                <a href="#">
-                    <button className={styles.button}>
-                    <span className={styles.span}>
-                        <i className={`material-symbols-outlined ${styles.i}`}> Backpack </i>
-                        <span className={styles.span}>
-                            Trabalhos
-                        </span>
-                    </span>
-                    </button>
-                </a>        
-            <a href="#">
+            </a>      
+            <a href="./notas.jsx">
                 <button className={styles.button}>
                     <span className={styles.span}>
                         <i className={`material-symbols-outlined ${styles.i}`}> Leaderboard </i>

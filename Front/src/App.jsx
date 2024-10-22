@@ -4,6 +4,7 @@ import Equipes from './pages/Equipes'
 import Equipe from './pages/Equipe'
 import Ativ from "./pages/Atividade"
 import Tra from "./pages/Trabalhos"
+import Notas from "./pages/notas"
 import './index.css'
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/Atividade/:id" element={<Ativ />} />
         <Route path="/equipes" element={<Equipes />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/Notas" element={<Notas />} />
         <Route path="/Trabalhos/:id" element={<Equipe/>} />
         <Route path="/Trabalhos/aluno/:alunoId" element={<Tra/>} />
         <Route path="/" element={<Login />} />

@@ -202,8 +202,8 @@ height: 40px;
     border-radius: 20px;
     padding: 5px;
 }
-.MainConteinerTrabalhos{
-    height: 1000px;
+.MainConteinerTrabalhos2{
+    margin-left: 20%;
 }
 
 @media (width < 800px){

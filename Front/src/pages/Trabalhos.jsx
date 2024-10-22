@@ -14,9 +14,11 @@ const AtividadesAluno = () => {
     ];
 
     return (
-        <div className={styles.MainConteinerTrabalhos}>
-            <Header />
-            <Sidebar />
+        <div style={{height: "100vh"}}>
+        <Header />
+        <Sidebar />
+        <div className={styles.MainConteinerTrabalhos2}>
+            
             <div className={styles.atividades}>
                 <h1 style={{ textAlign: 'center', color: 'white' }}>Atividades do Aluno</h1>
                 <div className={styles.conteinerAtiv}>
@@ -42,6 +44,7 @@ const AtividadesAluno = () => {
                     </table>
                 </div>
             </div>
+        </div>
         </div>
     );
 };
