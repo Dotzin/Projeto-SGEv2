@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SGE - Trabalhos</title>
-    <link rel="shortcut icon" href="imagens/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="shortcut icon" href="imagens/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
   </head>
   <body>
-
     <!--Sidebar-->
     <aside class="sidebar">
       <header class="sidebar-header">
@@ -18,94 +20,105 @@
       <nav>
         <!--Botões da sidebar-->
         <a href="../Home/index.html">
-          <button >
-          <span>
-              <i class="material-symbols-outlined"> home </i>
-              <span>
-                  Home
-              </span>
-          </span>
-      </button>
-  </a>
-      <a href="../Matérias/materias.html">
           <button>
-              <span>
-                  <i class="material-symbols-outlined"> Groups </i>
-                  <span>
-                      Matérias
-                  </span>
-              </span>
+            <span>
+              <i class="material-symbols-outlined"> home </i>
+              <span> Home </span>
+            </span>
           </button>
-      </a>
-          <a href="#">
-              <button>
-              <span>
-                  <i class="material-symbols-outlined"> Backpack </i>
-                  <span>
-                      Trabalhos
-                  </span>
-              </span>
-              </button>
-          </a>        
-      
-          <a href="../Notas/notas.html">
-            <button>
-                <span>
-                    <i class="material-symbols-outlined"> Leaderboard </i>
-                    <span>
-                        Notas
-                    </span>
-                </span>
-            </button>
         </a>
-  </nav>
-</aside>
-        <main class="main">
-          <!--Cabeçalho-->
-          <header id="topo">
-            <H1>Trabalhos</H1>
-          </header>
-                              
-          <nav id="menu">
+        <a href="../Matérias/materias.html">
+          <button>
+            <span>
+              <i class="material-symbols-outlined"> Groups </i>
+              <span> Matérias </span>
+            </span>
+          </button>
+        </a>
+        <a href="#">
+          <button>
+            <span>
+              <i class="material-symbols-outlined"> Backpack </i>
+              <span> Trabalhos </span>
+            </span>
+          </button>
+        </a>
 
-            <button class="btnpendentes">
-              <span class="pendentes">
-                Pendentes
+        <a href="../Notas/notas.html">
+          <button>
+            <span>
+              <i class="material-symbols-outlined"> Leaderboard </i>
+              <span> Notas </span>
+            </span>
+          </button>
+        </a>
+      </nav>
+    </aside>
+    <main class="main">
+      <!--Cabeçalho-->
+      <header id="topo">
+        <h1>Trabalhos</h1>
+      </header>
+
+      <nav id="menu">
+        <a href="#">
+          <button class="btnpendentes">
+            <span class="pendentes"> Pendentes </span>
+          </button>
+        </a>
+
+        <a href="#">
+          <button class="btnpendentes">
+            <span class="pendentes"> Concluidas </span>
+          </button>
+        </a>
+
+        <a href="#">
+          <button class="btnpendentes">
+            <span class="pendentes"> Vencidas </span>
+          </button>
+        </a>
+      </nav>
+
+      <!--Trabalhos 10/10 sim-->
+      <span class="data">
+        <h2>Vence dia 19</h2>
+      </span>
+
+       <a class="linktrabalho" href="trabalhos/trabalho1.html">
+         
+              <span class="trabalho1">
+                <img src="imagens/mat.png" class="icontrabalho" />
+                <h1>TRABALHO 1</h1>
               </span>
-            </button>
-
-            <button class="btnpendentes">
-              <span class="pendentes">
-                Concluidas
-              </span>
-            </button>
-
-            <button class="btnpendentes">
-              <span class="pendentes">
-                Vencidas
-              </span>
-            </button>
-          </nav>
-
-          <!--Trabalhos 10/10 sim-->
-                  <span class="data">
-                    <h2>Vence dia 19</h2>
-                  </span>
-                
-              <div class="trabalho1"><img src="imagens/mat.png" class="icontrabalho"> <h1>TRABALHO 1</h1></div>
-                  
-              <span class="data">
-                <h2>Vence dia 19</h2>
-              </span>
-
-              <div class="trabalho"><img src="imagens/mat.png" class="icontrabalho"> <h1>TRABALHO 2</h1></div>
-              
-              <span class="data">
-                <h2>Vence dia 19</h2>
-              </span>
-
-              <div class="trabalho"><img src="imagens/mat.png" class="icontrabalho"> <h1>TRABALHO 3</h1></div>
+         
+       </a>
             
-        </main>
+      
+        <span class="data">
+          <h2>Vence dia 19</h2>
+        </span>
+
+
+      
+          <a class="linktrabalho" href="trabalhos/trabalho2.html">
+            <span class="trabalho">
+              <img src="imagens/mat.png" class="icontrabalho" />
+              <h1>TRABALHO 2</h1>
+            </span>
+          </a>
+        
+      <span class="data">
+        <h2>Vence dia 19</h2>
+      </span>
+
+          <a class="linktrabalho" href="trabalhos/trabalho3.html">
+            <span class="trabalho">
+              <img src="imagens/mat.png" class="icontrabalho" />
+              <h1>TRABALHO 3</h1>
+            </span>
+          </a>
+        
+    </main>
   </body>
 </html>

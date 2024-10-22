@@ -1,0 +1,212 @@
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(36, 34, 34);
+    color: aliceblue;
+}
+
+.sidebar{  /*cria a side bar e faz estilizações e posicionamento*/
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    width: 150px;
+    height: 100%;
+    padding: 40px 10px 30px 10px;
+    border-right: 1px solid rgb(19, 12, 12);
+}
+
+.sidebar-header{
+    width: 100%;
+    margin-bottom: 16px ;
+}
+.logo-img{ /*Da estilo a foto de perfil*/
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: 0.4s;
+    margin-left: 30%;
+    cursor: pointer;
+}
+
+.logo-img:hover{ /*cria o efeito de ao passar o mause por cima a escala da foto aumenta*/
+    transform: scale(1.5);
+}
+
+.sidebar button{ /*cria estilo aos buttons da side bar*/
+    height: 50px;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+    color: aliceblue;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+}
+
+.sidebar button > span{  /*estilo para o texto dos buttons*/
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    padding: 0 16px 0 12px;
+    border-radius: 24px;
+    line-height: 1;
+    transition: all 0.2s;
+}
+
+.sidebar button:hover > span{ /*Quando passamos o mause sobre os buttons o fundo muda */
+    background: rgb(63, 61, 61); 
+}
+
+.sidebar button i {   /*cria estilo ao simbolo dos buttons sim*/
+    position: relative;
+    font-size: 28px;
+    transition: 0.2s;
+}
+
+.sidebar button span{ 
+    font-size: 16px;
+}
+
+
+.sidebar > nav{
+    flex: 1 1 auto;
+}
+
+/*Estilização da sidebar*/
+@media (width < 700px) {
+
+    .sidebar{
+        width: 72px;
+        
+
+    }
+
+    .sidebar button > span{
+        width: 50px;
+        transition: 0.4s;
+    }
+
+    .sidebar button > span > span{
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .main{
+        transition: 0.4s;
+        margin-left: 78px !important; 
+        
+    }
+
+    .main > a > div{
+        height:100px;
+        width: 100px;
+        margin: 5px;
+        margin-top: 20px;
+        
+    }
+
+    .main > div{
+        height:100px;
+        width: 100px;
+        margin: 5px;
+        margin-top: 20px;  
+             
+        
+    }
+
+    .imgmat {
+        height:40px;
+        width: 40px;
+        margin-top: 0px;
+      
+    }
+
+    .p2{
+        font-size: 13px;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0px;
+    }
+
+}
+
+
+main { 
+    margin-left: 160px; 
+    padding: 20px;
+}
+
+header#topo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    border-bottom: 2px solid black;
+    border-radius: 10px;
+    text-shadow: 1px 1px 5px black;
+    margin-bottom: 20px;
+}
+
+.tarefa {
+    background-color: #2f2e2ea3;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    color: aliceblue;
+}
+
+.enviar{
+    background-color: #2f2e2ea3;
+    display: inline;
+}
+
+.btnEnviar{
+    background-color: #28a745;
+    border: none;
+    border-radius: 10px;
+    padding: 3px 15px;
+    margin: 1%;
+}
+
+.btnEnviar:hover{
+    background-color: #276d37;
+    transition: 0.2s;
+}
+
+.arquivo {
+    display: none;
+}
+
+.labelArquivo{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(36, 34, 34);
+    display: inline-block;
+}
+
+.labelArquivo:hover {
+    background: rgb(63, 61, 61);
+    transition: 0.2s;
+}
+
+.iconedamateria{
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: white;
+    display: inline;
+}
