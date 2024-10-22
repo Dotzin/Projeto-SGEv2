@@ -1,0 +1,230 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(36, 34, 34);
+  color: aliceblue;
+}
+
+.border {
+  border: 1px solid red;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 150px;
+  height: 100%;
+  padding: 40px 10px 30px 10px;
+  border-right: 1px solid rgb(19, 12, 12);
+  z-index: 10;
+  background-color: rgb(36, 34, 34);
+}
+
+.sidebar-header {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.logo-img {
+  width: 50px;
+  max-height: 45px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 0.4s;
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.logo-img:hover {
+  transform: scale(1.5);
+}
+
+.sidebar button {
+  height: 50px;
+  background-color: transparent;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 0;
+  color: aliceblue;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+
+.sidebar button > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 48px;
+  padding: 0 16px 0 12px;
+  border-radius: 24px;
+  line-height: 1;
+  transition: all 0.2s;
+}
+
+.sidebar button:hover > span {
+  background: rgb(63, 61, 61);
+}
+
+.sidebar button i {
+  position: relative;
+  font-size: 28px;
+  transition: 0.2s;
+}
+
+.sidebar button span {
+  font-size: 16px;
+}
+
+.sidebar > nav {
+  flex: 1 1 auto;
+}
+
+/* Estilo para telas menores */
+@media (width < 700px) {
+    .sidebar {
+      width: 72px;
+    }
+    .sidebar button > span {
+      width: 50px;
+      transition: 0.4s;
+    }
+    .sidebar button > span > span {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .main {
+      transition: 0.4s;
+      margin-left: 78px !important;
+    }
+    .main > a > div {
+      height: 100px;
+      width: 100px;
+      margin: 5px;
+      margin-top: 20px;
+    }
+    .main > div {
+      height: 100px;
+      width: 100px;
+      margin: 5px;
+      margin-top: 20px;
+    }
+    .imgmat {
+      height: 40px;
+      width: 40px;
+      margin-top: 0px;
+    }
+    .p2 {
+      font-size: 13px;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0px;
+    }
+  }
+  
+.notification-container { /* Notificação */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.notification { /* Square branco + Animação. NÃO MEXE NESSA BUSETAAAAAAAAAAAAAAAAAAAA */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    padding: 60px 40px; 
+    border-radius: 10px;
+    color: #28a745;
+    width: auto;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeColor 5s ease-in-out forwards;
+    max-width: 600px; 
+    text-align: center; 
+}
+.notification:hover { /* Efeito do mouse*/
+  transform: scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+.message { /* Fonte */
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+.emoji {
+  margin-top: 20px;
+  font-size: 48px;
+}
+
+.wave { /* Animação bg Breath gradial. NÃO MEXE NESTA BUCETA*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(45deg, rgba(148, 96, 201, 0.7), rgba(50, 50, 50, 0.7)); /* aqui pode*/
+  z-index: -1; /* Nem nisso. */
+  opacity: 0;
+  animation: breathingWave 5s ease-in-out infinite;
+}
+
+@keyframes breathingWave { /* animação breath */
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 0.4;
+  }
+  25% {
+    transform: scale(1.2) translateY(-20px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.5) translateY(0);
+    opacity: 0.8;
+  }
+  75% {
+    transform: scale(1.2) translateY(20px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.4;
+  }
+}
+@keyframes fadeIn { /* Animação fade-in */
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fadeColor { /* Animação de que troca as cores do Square e Texto */
+  0% {
+    background-color: #000;
+    color: #28a745;
+  }
+  50% {
+    background-color: #888;
+    color: #fff;
+  }
+  100% {
+    background-color: #fff;
+    color: #000;
+  }
+}/*# sourceMappingURL=Styles2.css.map */

@@ -1,0 +1,191 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(36, 34, 34);
+    color: aliceblue;
+}
+
+.border {
+    border: 1px solid red;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 150px;
+    height: 100%;
+    padding: 40px 10px 30px 10px;
+    border-right: 1px solid rgb(19, 12, 12);
+    z-index: 10;
+    background-color: rgb(36, 34, 34);
+}
+
+.sidebar-header {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.logo-img {
+    width: 50px;
+    max-height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: 0.4s;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.logo-img:hover {
+    transform: scale(1.5);
+}
+
+.sidebar button {
+    height: 50px;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 0;
+    color: aliceblue;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+}
+
+.sidebar button > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    height: 48px;
+    padding: 0 16px 0 12px;
+    border-radius: 24px;
+    line-height: 1;
+    transition: all 0.2s;
+}
+
+.sidebar button:hover > span {
+    background: rgb(63, 61, 61);
+}
+
+.sidebar button i {
+    position: relative;
+    font-size: 28px;
+    transition: 0.2s;
+}
+
+.sidebar button span {
+    font-size: 16px;
+}
+
+.sidebar > nav {
+    flex: 1 1 auto;
+}
+
+
+.notification-container {/* Notificação */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.notification { /*Square branco + Animação. Pode até mexer mas não altere muitos os valores porque pode bugar */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000; 
+    padding: 80px 40px; 
+    border-radius: 10px;
+    color: #28a745; 
+    width: auto;
+    height: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    animation: fadeColor 5s ease-in-out forwards; 
+    max-width: 500px;
+}
+.notification:hover { /* Efeito do mouse*/
+    transform: scale(1.10); 
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25); 
+}
+.message {/* Fonte */
+    font-size: 24px;
+    font-weight: bold; 
+    margin: 0;
+    text-align: center;
+}
+
+.emoji {/* Emoji  */
+    margin-top: 20px;
+    font-size: 48px; /* Emoji maior */
+}
+
+.wave {/* Animação bg Breath gradial. NÃO MEXE NESTA BUCETA*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, rgba(148, 96, 201, 0.7), rgba(50, 50, 50, 0.7)); /* aqui pode*/
+    z-index: -1; /* Nem nisso. */
+    opacity: 0;
+    animation: breathingWave 5s ease-in-out infinite;
+  }
+  
+  
+  @keyframes breathingWave {/* animação breath */
+    0% {
+      transform: scale(1) translateY(0);
+      opacity: 0.4;
+    }
+    25% {
+      transform: scale(1.2) translateY(-20px);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.5) translateY(0);
+      opacity: 0.8;
+    }
+    75% {
+      transform: scale(1.2) translateY(20px);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1) translateY(0);
+      opacity: 0.4;
+    }
+  }
+  
+  
+
+
+@keyframes fadeIn {/* Animação fade-in */
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes fadeColor {/* Animação de que troca as cores do Square e Texto */
+    0% {
+        background-color: #000; 
+        color: #28a745; 
+    }
+    50% {
+        background-color: #888; 
+        color: #fff; 
+    }
+    100% {
+        background-color: #fff;
+        color: #000; 
+    }
+}
