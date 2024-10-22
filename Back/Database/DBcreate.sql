@@ -59,3 +59,11 @@ CREATE TABLE Materiais (
 );
 
 
+CREATE TABLE Avaliacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    atividadeId INT,
+    alunoId INT,
+    nota DECIMAL(5, 2),  -- Aqui, ajuste o tipo e a precisão conforme necessário
+    FOREIGN KEY (atividadeId) REFERENCES Atividades(id),
+    FOREIGN KEY (alunoId) REFERENCES Usuarios(id)
+);

@@ -143,7 +143,68 @@ border-radius: 0px 00px 20px 20px ;
     align-items: center;
     flex-direction: column;
 }
+.atividades{
+    margin-top: 10%;
+    margin-left: 20%;
+    background-color: #3f3f3f;
+    width: 70%;
+    height: 50%;
+    border-radius: 20px;
+}
+.InfoAtivCont{
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    border-radius: 20%;
+}
+.titulo{
+    font-size: xx-large;
+}
+.dec{
+    font-size: x-large;
+}
+.FormEnviarAtiv{
+    display: flex;
+    flex-direction: row;
+    background-color: #252525; 
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+.areaRquivo{
+    background-color: #252525;
+}
+.BtnEnviar{
+    background-color: #575757;
+    height: 40px;
+    width: 70px;
+    border-radius: 20px;
+    margin-right: 15px;
+    border: none;
+    margin-left: 15px;
+}
+.areaRquivo::file-selector-button{
+background-color: green;
+border: none;
+height: 40px;
+    width: 70px;
+    border-radius: 20px;
+    padding: 5px;
 
+}
+.areaRquivo{
+    background-color: #888;
+    border-radius: 20px;
+    padding: 5px;
+}
+.MainConteinerTrabalhos{
+    height: 1000px;
+}
 
 @media (width < 800px){
     .conteinerEquipes{

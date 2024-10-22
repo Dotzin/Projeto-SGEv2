@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from './components/Header';
 import Sidebar from './components/sidebarEquipe';
@@ -7,6 +7,7 @@ import styles from './components/Styles/equipes.module.css';
 
 const EquipeDetalhes = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const [sala, setSala] = useState(null);
     const [atividades, setAtividades] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -149,7 +150,7 @@ const EquipeDetalhes = () => {
                 <ul>
                     {atividades.length > 0 ? ( 
                         atividades.map((atividade) => (
-                            <li key={atividade.id} >
+                            <li key={atividade.id} onClick={() => navigate(`/Atividade/${atividade.id}`)}>
                                 <div className={styles.atividade}>
                                     <p><strong>Título:</strong> {atividade.Titulo}</p>
                                     <p><strong>Data de Entrega:</strong> {new Date(atividade.dataEntrega).toLocaleDateString()}</p>
