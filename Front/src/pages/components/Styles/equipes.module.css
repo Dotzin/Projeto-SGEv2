@@ -9,7 +9,7 @@
 }
 .conteinerEquipes{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     padding: 10px;
     width: 70%;
@@ -72,9 +72,8 @@ align-items: center;
 border-radius: 0px 00px 20px 20px ;
 }
 .botaoCriarSala{
-    width: 15%;
+    width: 100px;
     height: 30px;
-    margin-top: 5vh;
     background-color: rgb(49, 49, 49);
     color: white;
     border: none;
@@ -85,6 +84,67 @@ border-radius: 0px 00px 20px 20px ;
 .botaoCriarSala:hover{
     transform: scale(1.2);
 }
+.inputCriarSalaaa{
+    background-color: gray;
+    border: none;
+    width: 200px;
+    border-radius: 20px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+.contcriarsala{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.conteinerAtiv{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    width: 80%;
+    height: 70%;
+    margin-top: 10%;
+    margin-left: 20%;
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-color: red;
+    transition: all 0.5s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+.atividade{
+    margin-bottom: 15px;
+    width: 100vh;
+    display: flex;
+    height: 15px;
+    background-color: #3f3f3f;
+    align-items: center;
+    padding: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+    justify-content: space-between;
+}.atividade:hover{
+    transform: scale(1.1);
+}
+.formContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
 @media (width < 800px){
     .conteinerEquipes{
         margin-top: 15%;

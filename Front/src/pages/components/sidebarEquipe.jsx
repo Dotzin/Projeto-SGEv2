@@ -15,6 +15,16 @@ const Sidebar = () => {
                 </span>
             </button>
         </a>
+            <a href="   ">
+                <button className={styles.button}>
+                    <span className={styles.span}>
+                        <i className={`material-symbols-outlined ${styles.i}`}> Groups </i>
+                        <span className={styles.span}>
+                            Materiais
+                        </span>
+                    </span>
+                </button>
+            </a>
                 <a href="#">
                     <button className={styles.button}>
                     <span className={styles.span}>
@@ -24,17 +34,7 @@ const Sidebar = () => {
                         </span>
                     </span>
                     </button>
-                </a>        
-            <a href="#">
-                <button className={styles.button}>
-                    <span className={styles.span}>
-                        <i className={`material-symbols-outlined ${styles.i}`}> Leaderboard </i>
-                        <span className={styles.span}>
-                            Materiais
-                        </span>
-                    </span>
-                </button>
-            </a>
+                </a>     
         </nav>
     </aside>
   );

@@ -392,4 +392,19 @@ router.get('/materiais/:salaId/salas', async (req, res) => {
   }
 });
 
+router.get('/salas/:salaId', async (req, res) => {
+  const { salaId } = req.params;
+
+  try {
+    const results = await queryDatabase('SELECT * FROM Salas WHERE id = ?', [salaId]);
+    if (results.length === 0) {
+      return res.status(404).json({ message: 'Sala não encontrada.' });
+    }
+    res.json(results[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Erro ao obter sala.' });
+  }
+});
+
 module.exports = router;

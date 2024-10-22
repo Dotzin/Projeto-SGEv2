@@ -5,19 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import styles from './components/Styles/equipes.module.css';
 
-// Função para listar salas
 const listarSalas = async (rm) => {
     try {
         const response = await axios.get(`http://localhost:3304/api/alunos/${rm}/salas`);
-        console.log(response.data);
         return response.data;
     } catch (error) {
         console.error('Erro ao listar salas:', error);
-        throw error; // Lançar o erro para ser tratado no useEffect
+        throw error;
     }
 };
 
-// Função para verificar o token
 const verificarToken = async (token) => {
     try {
         const response = await axios.post('http://localhost:3304/api/auth/verificar', {}, {
@@ -25,25 +22,26 @@ const verificarToken = async (token) => {
                 Authorization: `Bearer ${token}`
             }
         });
-        return response.data; // Deve retornar { rm, tipo }
+        return response.data;
     } catch (error) {
         console.error('Erro ao verificar token:', error);
-        throw error; // Lançar o erro para ser tratado no useEffect
+        throw error;
     }
 };
 
 const Equipes = () => {
-    const nav = useNavigate();
+    const navigate = useNavigate();
     const titulo = "Equipes";
     const [userInfo, setUserInfo] = useState({ rm: '', tipo: '' });
     const [salas, setSalas] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [novoNomeSala, setNovoNomeSala] = useState('');
     const token = localStorage.getItem('token');
 
     useEffect(() => {
         const fetchUserInfo = async () => {
             if (!token) {
-                nav('/login');
+                navigate('/login');
                 setLoading(false);
                 return;
             }
@@ -61,11 +59,36 @@ const Equipes = () => {
         };
 
         fetchUserInfo();
-    }, [nav, token]);
+    }, [navigate, token]);
 
-    const handleCreateRoom = () => {
-        // Lógica para criar uma nova sala
-        console.log('Criar nova sala');
+    const handleCreateRoom = async () => {
+        if (!novoNomeSala) {
+            alert("O nome da sala é obrigatório.");
+            return;
+        }
+
+        try {
+            const response = await axios.post('http://localhost:3304/api/salas/criar', {
+                nome: novoNomeSala,
+                professorId: userInfo.rm
+            });
+            const novaSala = response.data;
+
+            await axios.post('http://localhost:3304/api/salas/addAlunos', {
+                salaId: novaSala.id,
+                alunoId: userInfo.rm
+            });
+
+            setSalas([...salas, novaSala]);
+            setNovoNomeSala('');
+        } catch (error) {
+            console.error('Erro ao criar sala:', error);
+            alert('Erro ao criar sala. Tente novamente.');
+        }
+    };
+
+    const redirecionar = (id) => {
+        navigate(`/Trabalhos/${id}`); // Redireciona para a equipe com o ID correspondente
     };
 
     if (loading) {
@@ -77,22 +100,36 @@ const Equipes = () => {
             <Header titulo={titulo} pagina={titulo} />
             <Sidebar />
             <div className={styles.conteinerEquipes}>
-                <div className={styles.contcriarsala}></div>
+                <div className={styles.contcriarsala}>
+                    {userInfo.tipo === 'professor' && (
+                        <div className={styles.contcriarsala}>
+                            <input 
+                                type="text" 
+                                value={novoNomeSala} 
+                                className={styles.inputCriarSalaaa}
+                                onChange={(e) => setNovoNomeSala(e.target.value)} 
+                                placeholder="Nome da nova sala" 
+                            />
+                            <button onClick={handleCreateRoom} className={styles.botaoCriarSala}>
+                                Criar Sala
+                            </button>
+                        </div>
+                    )}
+                </div>
                 {salas.length === 0 ? (
                     <p>Nenhuma sala encontrada.</p>
                 ) : (
                     salas.map(sala => (
-                        <div className={styles.equipe} key={sala.id}>
+                        <div 
+                            className={styles.equipe} 
+                            key={sala.id} 
+                            onClick={() => redirecionar(sala.id)}
+                        >
                             <div className={styles.BottomEquipes}>
-                                <span className={styles.equipenome}>{sala.nome}</span>
+                                <p>{sala.nome}</p>
                             </div>
                         </div>
                     ))
-                )}
-                {userInfo.tipo === 'professor' && (
-                    <button onClick={handleCreateRoom} className={styles.botaoCriarSala}>
-                        Criar Sala
-                    </button>
                 )}
             </div>
         </div>

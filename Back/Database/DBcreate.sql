@@ -25,6 +25,7 @@ CREATE TABLE Salas_Alunos (
 
 CREATE TABLE Atividades (
     id INT AUTO_INCREMENT PRIMARY KEY,
+    Titulo TEXT(300),
     salaId INT,
     descricao TEXT,
     dataEntrega DATE,

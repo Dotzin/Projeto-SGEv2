@@ -17,7 +17,7 @@ app.use(cors());
 // Rotas
 app.use('/api/auth', authRoutes);
 app.use('/api/contas', contasRoutes); 
-app.use('/api', rotasAtividadesSalas); // A rota para atividades salas
+app.use('/api', rotasAtividadesSalas);
 
 // Iniciando o servidor
 app.listen(port, () => {
